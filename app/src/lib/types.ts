@@ -6,6 +6,9 @@ export interface UseCase {
   category: string;
   audience: string;
   difficulty: string;
+  intents?: string[];
+  is_pick?: boolean;
+  pick_reason?: string | null;
 }
 
 export interface EpisodeAnalysis {
@@ -38,6 +41,9 @@ export interface UseCaseFlat {
   category: string;
   audience: string;
   difficulty: string;
+  intents: string[];
+  is_pick: boolean;
+  pick_reason: string | null;
   episode_id: string;
   episode_title: string;
   guest_name: string | null;

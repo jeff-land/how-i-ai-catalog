@@ -36,6 +36,15 @@ function formatCategory(cat: string): string {
   return CATEGORY_LABELS[cat] || cat.charAt(0).toUpperCase() + cat.slice(1).replace(/-/g, " ");
 }
 
+const INTENT_CONFIG: { id: string; label: string; description: string }[] = [
+  { id: "ship-faster", label: "Ship faster", description: "Get real work done more efficiently" },
+  { id: "automate", label: "Automate the boring stuff", description: "Eliminate tedious, repetitive work" },
+  { id: "tinker", label: "Tinker on something", description: "Personal projects & creative exploration" },
+  { id: "get-inspired", label: "Get inspired", description: "Novel ideas you didn't know were possible" },
+  { id: "level-up", label: "Level up my skills", description: "Learn, grow, get better at your craft" },
+  { id: "think-strategically", label: "Think more strategically", description: "Planning & decision-making" },
+];
+
 interface HomeClientProps {
   useCases: UseCaseFlat[];
   allAudiences: string[];
@@ -51,8 +60,13 @@ export default function HomeClient({
 }: HomeClientProps) {
   const [search, setSearch] = useState("");
   const [selectedRole, setSelectedRole] = useState<string | null>(null);
+  const [selectedIntent, setSelectedIntent] = useState<string | null>(null);
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [surpriseUseCase, setSurpriseUseCase] = useState<UseCaseFlat | null>(null);
+  const [showAllPicks, setShowAllPicks] = useState(false);
+
+  // All picks
+  const picks = useMemo(() => useCases.filter((uc) => uc.is_pick), [useCases]);
 
   // Filter use cases
   const filtered = useMemo(() => {
@@ -62,6 +76,10 @@ export default function HomeClient({
       if (selectedRole) {
         if (uc.audience !== selectedRole && uc.audience !== "everyone") return false;
       }
+      // Intent filter
+      if (selectedIntent) {
+        if (!uc.intents?.includes(selectedIntent)) return false;
+      }
       // Text search
       if (q) {
         const searchable = [
@@ -70,7 +88,7 @@ export default function HomeClient({
           uc.description,
           uc.guest_name,
           uc.episode_title,
-          ...uc.tools,
+          ...(uc.tools || []),
           uc.category,
         ]
           .filter(Boolean)
@@ -80,7 +98,12 @@ export default function HomeClient({
       }
       return true;
     });
-  }, [useCases, search, selectedRole]);
+  }, [useCases, search, selectedRole, selectedIntent]);
+
+  // Filtered picks (respect role + intent + search)
+  const filteredPicks = useMemo(() => {
+    return filtered.filter((uc) => uc.is_pick);
+  }, [filtered]);
 
   // Group by category, sorted by count
   const grouped = useMemo(() => {
@@ -114,7 +137,10 @@ export default function HomeClient({
     setSurpriseUseCase(random);
   }, [filtered, useCases]);
 
+  const hasActiveFilters = selectedRole || selectedIntent || search;
+
   const CARDS_PER_CATEGORY = 6;
+  const PICKS_INITIAL = 6;
 
   return (
     <div className="space-y-10">
@@ -169,6 +195,40 @@ export default function HomeClient({
             className="mt-3 text-xs text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors"
           >
             Show all roles
+          </button>
+        )}
+      </div>
+
+      {/* Intent picker */}
+      <div className="text-center">
+        <p className="mb-3 text-sm font-medium text-[var(--color-muted)]">
+          I want to...
+        </p>
+        <div className="flex flex-wrap justify-center gap-2">
+          {INTENT_CONFIG.map((intent) => {
+            const isActive = selectedIntent === intent.id;
+            return (
+              <button
+                key={intent.id}
+                onClick={() => setSelectedIntent(isActive ? null : intent.id)}
+                className={`rounded-xl px-4 py-2.5 text-sm font-medium transition-all ${
+                  isActive
+                    ? "bg-[var(--color-foreground)] text-[var(--color-background)] shadow-md scale-105"
+                    : "border border-[var(--color-border)] bg-[var(--color-surface)] text-[var(--color-muted)] hover:border-[var(--color-foreground)] hover:text-[var(--color-foreground)] hover:shadow-sm"
+                }`}
+                title={intent.description}
+              >
+                {intent.label}
+              </button>
+            );
+          })}
+        </div>
+        {selectedIntent && (
+          <button
+            onClick={() => setSelectedIntent(null)}
+            className="mt-3 text-xs text-[var(--color-muted)] hover:text-[var(--color-accent)] transition-colors"
+          >
+            Show all goals
           </button>
         )}
       </div>
@@ -250,10 +310,64 @@ export default function HomeClient({
         {selectedRole && (
           <span> for <span className="font-medium text-[var(--color-foreground)]">{selectedRole.replace(/-/g, " ")}</span></span>
         )}
+        {selectedIntent && (
+          <span> to <span className="font-medium text-[var(--color-foreground)]">{INTENT_CONFIG.find(i => i.id === selectedIntent)?.label.toLowerCase()}</span></span>
+        )}
         {search && (
           <span> matching &ldquo;<span className="font-medium text-[var(--color-foreground)]">{search}</span>&rdquo;</span>
         )}
+        {hasActiveFilters && (
+          <>
+            {" "}
+            <button
+              onClick={() => {
+                setSearch("");
+                setSelectedRole(null);
+                setSelectedIntent(null);
+              }}
+              className="text-[var(--color-accent)] hover:underline"
+            >
+              Clear filters
+            </button>
+          </>
+        )}
       </div>
+
+      {/* Claude's Picks */}
+      {filteredPicks.length > 0 && (
+        <section>
+          <div className="mb-4 flex items-baseline justify-between">
+            <div className="flex items-center gap-2">
+              <h2 className="text-xl font-bold text-[var(--color-foreground)]">
+                Claude&rsquo;s Picks
+              </h2>
+              <span className="rounded-full bg-[var(--color-accent)] px-2 py-0.5 text-[10px] font-semibold text-white">
+                {filteredPicks.length}
+              </span>
+            </div>
+            <span className="text-sm text-[var(--color-muted)]">
+              The most useful, surprising, and creative use cases
+            </span>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {(showAllPicks ? filteredPicks : filteredPicks.slice(0, PICKS_INITIAL)).map((uc, i) => (
+              <PickCard key={`pick-${uc.episode_id}-${i}`} useCase={uc} />
+            ))}
+          </div>
+          {filteredPicks.length > PICKS_INITIAL && (
+            <div className="mt-3 text-center">
+              <button
+                onClick={() => setShowAllPicks(!showAllPicks)}
+                className="text-sm font-medium text-[var(--color-accent)] hover:underline"
+              >
+                {showAllPicks
+                  ? "Show fewer picks"
+                  : `Show all ${filteredPicks.length} picks`}
+              </button>
+            </div>
+          )}
+        </section>
+      )}
 
       {/* Category sections */}
       {filtered.length === 0 ? (
@@ -265,6 +379,7 @@ export default function HomeClient({
             onClick={() => {
               setSearch("");
               setSelectedRole(null);
+              setSelectedIntent(null);
             }}
             className="mt-3 text-sm font-medium text-[var(--color-accent)] hover:underline"
           >
@@ -320,14 +435,80 @@ export default function HomeClient({
   );
 }
 
+function PickCard({ useCase }: { useCase: UseCaseFlat }) {
+  return (
+    <Link
+      href={`/episodes/${useCase.episode_id}`}
+      className="group relative flex flex-col rounded-xl border-2 border-[var(--color-accent)]/30 bg-[var(--color-surface)] p-4 transition-all hover:border-[var(--color-accent)] hover:shadow-md"
+    >
+      {/* Pick badge */}
+      <span className="absolute -top-2 right-3 rounded-full bg-[var(--color-accent)] px-2 py-0.5 text-[10px] font-semibold text-white">
+        Pick
+      </span>
+
+      {/* Title */}
+      <h3 className="text-sm font-semibold leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] line-clamp-2">
+        {useCase.title}
+      </h3>
+
+      {/* Pick reason */}
+      {useCase.pick_reason && (
+        <p className="mt-1.5 text-xs leading-relaxed text-[var(--color-accent)]/80 italic line-clamp-2">
+          {useCase.pick_reason}
+        </p>
+      )}
+
+      {/* One-liner */}
+      <p className="mt-1.5 text-xs leading-relaxed text-[var(--color-muted)] line-clamp-2">
+        {useCase.one_liner || useCase.description}
+      </p>
+
+      {/* Tools */}
+      <div className="mt-auto flex flex-wrap gap-1 pt-3">
+        {useCase.tools?.slice(0, 3).map((tool) => (
+          <span
+            key={tool}
+            className="rounded-full bg-[var(--color-accent-light)] px-2 py-0.5 text-[10px] font-medium text-[var(--color-accent)]"
+          >
+            {tool}
+          </span>
+        ))}
+        {(useCase.tools?.length || 0) > 3 && (
+          <span className="rounded-full border border-[var(--color-border)] px-2 py-0.5 text-[10px] text-[var(--color-muted)]">
+            +{(useCase.tools?.length || 0) - 3}
+          </span>
+        )}
+      </div>
+
+      {/* Meta row */}
+      <div className="mt-2 flex items-center gap-2 text-[10px] text-[var(--color-muted)]">
+        {useCase.guest_name && (
+          <span className="truncate">{useCase.guest_name}</span>
+        )}
+        {useCase.guest_name && <span>·</span>}
+        <span>{formatCategory(useCase.category)}</span>
+      </div>
+    </Link>
+  );
+}
+
 function UseCaseCard({ useCase }: { useCase: UseCaseFlat }) {
   return (
     <Link
       href={`/episodes/${useCase.episode_id}`}
-      className="group flex flex-col rounded-xl border border-[var(--color-border)] bg-[var(--color-surface)] p-4 transition-all hover:border-[var(--color-accent)] hover:shadow-md"
+      className={`group flex flex-col rounded-xl border bg-[var(--color-surface)] p-4 transition-all hover:shadow-md ${
+        useCase.is_pick
+          ? "border-[var(--color-accent)]/30 hover:border-[var(--color-accent)]"
+          : "border-[var(--color-border)] hover:border-[var(--color-accent)]"
+      }`}
     >
       {/* Title */}
       <h3 className="text-sm font-semibold leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] line-clamp-2">
+        {useCase.is_pick && (
+          <span className="mr-1.5 inline-block rounded bg-[var(--color-accent)] px-1 py-0.5 text-[9px] font-bold text-white align-middle">
+            PICK
+          </span>
+        )}
         {useCase.title}
       </h3>
 
