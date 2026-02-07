@@ -1,0 +1,53 @@
+name: Update podcast data
+
+on:
+  schedule:
+    # Run every Monday at 9am UTC (after new episodes typically drop)
+    - cron: "0 9 * * 1"
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      - name: Collect transcripts
+        run: python scripts/collect.py
+
+      - name: Analyze with Claude
+        if: env.ANTHROPIC_API_KEY != ''
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python scripts/analyze.py
+
+      - name: Generate sample analysis (fallback if no API key)
+        if: env.ANTHROPIC_API_KEY == ''
+        run: python scripts/generate_sample_analysis.py
+
+      - name: Sync data to app directory
+        run: bash scripts/sync_data_to_app.sh
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ app/data/
+          if git diff --staged --quiet; then
+            echo "No data changes to commit."
+          else
+            git commit -m "chore: update podcast data $(date +%Y-%m-%d)"
+            git push
+          fi
