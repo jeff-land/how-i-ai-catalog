@@ -1,0 +1,875 @@
+[
+  {
+    "title": "Guillermo Rauch: Vercel CEO on how v0 hit 3,200 PRs merged per day (and lets anyone ship)",
+    "description": "Guillermo Rauch, the CEO of Vercel, demonstrates how v0 has evolved from a simple prototyping tool to a complete development environment that supports the entire Git workflow. Guillermo shows how Verc",
+    "tools": [
+      "GitHub",
+      "Gemini",
+      "v0",
+      "Vercel"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "Yb9IyTOh0xg",
+    "episode_title": "Guillermo Rauch: Vercel CEO on how v0 hit 3,200 PRs merged per day (and lets anyone ship)",
+    "guest_name": null,
+    "publish_date": "20260204"
+  },
+  {
+    "title": "How this PM uses MCPs to automate his meeting prep, CRM updates, and customer feedback synthesis",
+    "description": "Reid Robinson, Principal AI Product Strategist at Zapier, shares how he uses Model Context Protocols (MCPs) to automate tedious tasks and create powerful workflows. He demonstrates practical workflows",
+    "tools": [
+      "Coda",
+      "Granola",
+      "MCP",
+      "Gemini",
+      "HubSpot"
+    ],
+    "category": "design",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "B5yDJAkz0rw",
+    "episode_title": "How this PM uses MCPs to automate his meeting prep, CRM updates, and customer feedback synthesis",
+    "guest_name": null,
+    "publish_date": "20260202"
+  },
+  {
+    "title": "My honest experience with Clawdbot (now Moltbot): where it was great, where it sucked",
+    "description": "In this episode, I take you through my unfiltered experience with Clawdbot, the viral open-source AI agent that’s been taking over tech Twitter. (In the time since this was recorded, the tool was rena",
+    "tools": [
+      "Devin",
+      "Next.js",
+      "Lovable",
+      "Vercel",
+      "Claude"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "fcFOYzMeG7U",
+    "episode_title": "My honest experience with Clawdbot (now Moltbot): where it was great, where it sucked",
+    "guest_name": "Clawdbot",
+    "publish_date": "20260128"
+  },
+  {
+    "title": "The senior engineer's guide to AI coding: Context loading, custom hooks, and automation",
+    "description": "John Lindquist is the co-founder of egghead.io and an expert in leveraging AI tools for professional software development. In this episode, John shares advanced techniques for using AI coding tools li",
+    "tools": [
+      "Claude Code",
+      "Gemini",
+      "GitHub",
+      "Cursor",
+      "Claude"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "LvLdNkgO-N0",
+    "episode_title": "The senior engineer's guide to AI coding: Context loading, custom hooks, and automation",
+    "guest_name": null,
+    "publish_date": "20260126"
+  },
+  {
+    "title": "Claude Code for product managers: research, writing, context libraries, custom to-do system, more",
+    "description": "Teresa Torres is the author of Continuous Discovery Habits and an internationally acclaimed speaker and coach. In this episode, Teresa demonstrates how she’s built a personalized productivity system u",
+    "tools": [
+      "Trello",
+      "Claude Code",
+      "Descript",
+      "ChatGPT",
+      "Obsidian"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "oBho3hZ7MHM",
+    "episode_title": "Claude Code for product managers: research, writing, context libraries, custom to-do system, more",
+    "guest_name": null,
+    "publish_date": "20260119"
+  },
+  {
+    "title": "The power user’s guide to Codex | Alexander Embiricos (product lead)",
+    "description": "Alexander Embiricos, the product lead for Codex at OpenAI, shares practical workflows for getting the most out of this AI coding agent. In this episode, he demonstrates how both non-technical users an",
+    "tools": [
+      "Linear",
+      "GitHub",
+      "Sora",
+      "Cursor",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "xeZDHGjG5zM",
+    "episode_title": "The power user’s guide to Codex | Alexander Embiricos (product lead)",
+    "guest_name": "Alexander Embiricos",
+    "publish_date": "20260112"
+  },
+  {
+    "title": "Zapier's CEO shares his personal AI stack | Wade Foster",
+    "description": "Wade Foster is the co-founder and CEO of Zapier. In this episode, Wade shows how he uses meeting transcripts, Zapier agents, and even Grok to analyze company culture, evaluate interview candidates, an",
+    "tools": [
+      "Granola",
+      "Descript",
+      "ChatGPT",
+      "Grok",
+      "Zapier"
+    ],
+    "category": "design",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "ZKnASs_d7aE",
+    "episode_title": "Zapier's CEO shares his personal AI stack | Wade Foster",
+    "guest_name": "Wade Foster",
+    "publish_date": "20260105"
+  },
+  {
+    "title": "How Webflow’s CPO built an AI chief of staff to manage her calendar and drive internal AI adoption",
+    "description": "Rachel Wolan, the chief product officer at Webflow, has embraced AI not just as a product leader but as a hands-on builder. A coder since age 16, Rachel has returned to her technical roots by creating",
+    "tools": [
+      "Figma",
+      "Claude Code",
+      "Cursor",
+      "Webflow",
+      "Claude"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "BTcG59ZR9sg",
+    "episode_title": "How Webflow’s CPO built an AI chief of staff to manage her calendar and drive internal AI adoption",
+    "guest_name": null,
+    "publish_date": "20251229"
+  },
+  {
+    "title": "How one designer led an AI revolution at Pendo: The paternity leave epiphany | Brian Greenbaum",
+    "description": "Brian Greenbaum is a Senior Staff Product Designer at Pendo who led a company-wide AI transformation after a personal epiphany while on paternity leave. After experiencing the power of AI coding tools",
+    "tools": [
+      "MCP",
+      "ChatGPT",
+      "Gemini",
+      "Midjourney",
+      "Cursor"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "yaG70VotukE",
+    "episode_title": "How one designer led an AI revolution at Pendo: The paternity leave epiphany | Brian Greenbaum",
+    "guest_name": null,
+    "publish_date": "20251222"
+  },
+  {
+    "title": "How AI got me 3 promotions: the ultimate guide for EAs (w/ Zapier’s EA)",
+    "description": "Cortney Hickey is the executive assistant to the CEO at Zapier, where she’s leveraging AI to transform traditional EA responsibilities into scalable, organization-wide systems. In this episode, she de",
+    "tools": [
+      "Google NotebookLM",
+      "NotebookLM",
+      "HubSpot",
+      "ChatGPT",
+      "Slack"
+    ],
+    "category": "design",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "SXCtQnJE8_I",
+    "episode_title": "How AI got me 3 promotions: the ultimate guide for EAs (w/ Zapier’s EA)",
+    "guest_name": null,
+    "publish_date": "20251215"
+  },
+  {
+    "title": "ChatGPT agent mode: The “little helper” that transformed recruiting & solved parking nightmares",
+    "description": "Michal Peled is a Technical Operations Engineer at HoneyBook who specializes in building internal tools and automations that eliminate friction for teams. In this episode, Michal demonstrates three pr",
+    "tools": [
+      "Gemini",
+      "NotebookLM",
+      "Claude",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "-lMItuklFco",
+    "episode_title": "ChatGPT agent mode: The “little helper” that transformed recruiting & solved parking nightmares",
+    "guest_name": null,
+    "publish_date": "20251208"
+  },
+  {
+    "title": "Gemini 3 vs. Claude Opus 4.5 vs. GPT-5.1 Codex: Which AI model is the best designer?",
+    "description": "I put three cutting-edge AI models to the test in a head-to-head design competition. Using the exact same prompt, I challenged Google’s Gemini 3, Anthropic’s Opus 4.5, and OpenAI’s Codex 5.1 to redesi",
+    "tools": [
+      "Gemini",
+      "GPT-5",
+      "Cursor",
+      "Lovable",
+      "Codex"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "6w0i2Wp0knM",
+    "episode_title": "Gemini 3 vs. Claude Opus 4.5 vs. GPT-5.1 Codex: Which AI model is the best designer?",
+    "guest_name": null,
+    "publish_date": "20251203"
+  },
+  {
+    "title": "“PMs who use AI will replace those who don’t”: Google’s AI product lead on the new PM toolkit",
+    "description": "Marily Nika, AI Product Lead at Google and founder of the AI Product Academy, demonstrates how product managers can leverage AI tools to dramatically accelerate their workflow. Using a smart-fridge co",
+    "tools": [
+      "NotebookLM",
+      "v0",
+      "Perplexity",
+      "Sora",
+      "ChatGPT"
+    ],
+    "category": "design",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "fFqZm_dJXdw",
+    "episode_title": "“PMs who use AI will replace those who don’t”: Google’s AI product lead on the new PM toolkit",
+    "guest_name": null,
+    "publish_date": "20251201"
+  },
+  {
+    "title": "How to create your own AI performance coach: Optimizing your nutrition, recovery & injury management",
+    "description": "Lucas Werthein, the COO and co-founder of Cactus, shares how he built a personalized AI wellness coach using ChatGPT to optimize his athletic performance while managing past injuries. After multiple s",
+    "tools": [
+      "Gemini",
+      "ChatGPT"
+    ],
+    "category": "design",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "sUrViudHaGA",
+    "episode_title": "How to create your own AI performance coach: Optimizing your nutrition, recovery & injury management",
+    "guest_name": null,
+    "publish_date": "20251124"
+  },
+  {
+    "title": "\"Farm to table software\": How I built a Thanksgiving party hub using Lovable",
+    "description": "In today’s pre-Thanksgiving episode, I walk you through how I vibe coded my very own “Thanksgiving party hub” using Lovable—and how I transformed it from AI-generated slop into something warm, persona",
+    "tools": [
+      "Midjourney",
+      "Lovable",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "20t1UrORq7I",
+    "episode_title": "\"Farm to table software\": How I built a Thanksgiving party hub using Lovable",
+    "guest_name": null,
+    "publish_date": "20251119"
+  },
+  {
+    "title": "How Emmy Award–winning filmmakers use AI to automate the tedious parts of documentaries",
+    "description": "Tim McAleer is a producer at Ken Burns’s Florentine Films who is responsible for the technology and processes that power their documentary production. Rather than using AI to generate creative content",
+    "tools": [
+      "Gemini",
+      "GitHub",
+      "Descript",
+      "Cursor",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "9ngbZwA_h00",
+    "episode_title": "How Emmy Award–winning filmmakers use AI to automate the tedious parts of documentaries",
+    "guest_name": null,
+    "publish_date": "20251117"
+  },
+  {
+    "title": "How this CEO turned 25,000 hours of sales calls into a self-learning go-to-market engine",
+    "description": "Matt Britton is the founder and CEO of Suzy, a consumer insights platform that has raised over $100 million in venture capital and works with top brands like Coca-Cola, Google, Procter & Gamble, and N",
+    "tools": [
+      "Slack",
+      "Zapier",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "gE0ShFMArsI",
+    "episode_title": "How this CEO turned 25,000 hours of sales calls into a self-learning go-to-market engine",
+    "guest_name": null,
+    "publish_date": "20251110"
+  },
+  {
+    "title": "A complete beginner's guide to coding with AI: From PRD to generating your very first lines of code",
+    "description": "This episode is for complete beginners. I walk you through how to build your very first coding project using AI tools—even if you’ve never written a line of code. Together, we’ll create a personal pro",
+    "tools": [
+      "Claude Code",
+      "v0",
+      "Next.js",
+      "GitHub",
+      "Cursor"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "k0gmTOm1eus",
+    "episode_title": "A complete beginner's guide to coding with AI: From PRD to generating your very first lines of code",
+    "guest_name": null,
+    "publish_date": "20251105"
+  },
+  {
+    "title": "“Vibe analysis”: How Faire uses Cursor, enterprise search, and custom agents to analyze data",
+    "description": "Tim Trueman and Alexa Cerf from Faire’s data team demonstrate how AI tools are revolutionizing data analysis workflows. They show how data teams, product managers, and engineers can use tools like Cur",
+    "tools": [
+      "MCP",
+      "MCPs",
+      "GitHub",
+      "Cursor",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "KOr-xQuNK4A",
+    "episode_title": "“Vibe analysis”: How Faire uses Cursor, enterprise search, and custom agents to analyze data",
+    "guest_name": null,
+    "publish_date": "20251103"
+  },
+  {
+    "title": "Vibe-coding a kid-friendly AI fortune teller for your Halloween festivities | Marco Casalaina",
+    "description": "In this impromptu Halloween special, Marco Casalaina (VP of Products for Core AI at Microsoft) demonstrates how he uses GitHub Spark to quickly build a mobile app that generates kid-friendly fortunes ",
+    "tools": [
+      "Claude Code",
+      "GitHub",
+      "GitHub Spark",
+      "GitHub Copilot",
+      "Cursor"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "3ZAqtHJJXSs",
+    "episode_title": "Vibe-coding a kid-friendly AI fortune teller for your Halloween festivities | Marco Casalaina",
+    "guest_name": "Marco Casalaina",
+    "publish_date": "20251031"
+  },
+  {
+    "title": "How this PM uses AI for PRDs, JIRA tickets, and replying to coworkers | Dennis Yang (Chime)",
+    "description": "Dennis Yang is the Principal Product Manager for Generative AI at Chime, where he’s pioneered AI workflows that meaningfully increase productivity. While most people use Cursor as a coding tool, Denni",
+    "tools": [
+      "Jira",
+      "MCP",
+      "MCPs",
+      "Cursor",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "rwmR7m5rvqw",
+    "episode_title": "How this PM uses AI for PRDs, JIRA tickets, and replying to coworkers | Dennis Yang (Chime)",
+    "guest_name": "Dennis Yang",
+    "publish_date": "20251027"
+  },
+  {
+    "title": "Claude Skills explained: How to create reusable AI workflows",
+    "description": "Today I dive into Anthropic’s latest feature that lets anyone create reusable workflows for Claude—no coding required. I break down exactly what Claude Skills are, how to build them from scratch, and ",
+    "tools": [
+      "Claude Code",
+      "Cursor",
+      "ChatGPT",
+      "Claude",
+      "Copilot"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "MZZCW179nKM",
+    "episode_title": "Claude Skills explained: How to create reusable AI workflows",
+    "guest_name": null,
+    "publish_date": "20251022"
+  },
+  {
+    "title": "How this Yelp AI PM works backward from “golden conversations” to create high-quality prototypes",
+    "description": "Priya Badger, a product manager at Yelp, shares her innovative approach to designing AI-powered products by starting with example conversations rather than traditional wireframes or PRDs. In this epis",
+    "tools": [
+      "Figma",
+      "ChatGPT",
+      "Magic Patterns",
+      "Lovable",
+      "Claude"
+    ],
+    "category": "design",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "wDA6DslBeqk",
+    "episode_title": "How this Yelp AI PM works backward from “golden conversations” to create high-quality prototypes",
+    "guest_name": null,
+    "publish_date": "20251020"
+  },
+  {
+    "title": "Evals, error analysis, and better prompts: A systematic approach to improving your AI products",
+    "description": "Hamel Husain, an AI consultant and educator, shares his systematic approach to improving AI product quality through error analysis, evaluation frameworks, and prompt engineering. In this episode, he d",
+    "tools": [
+      "GitHub",
+      "Gemini",
+      "Claude",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "PgzOBNse2EA",
+    "episode_title": "Evals, error analysis, and better prompts: A systematic approach to improving your AI products",
+    "guest_name": null,
+    "publish_date": "20251013"
+  },
+  {
+    "title": "“I’m incapable of doing my job without AI”: How this PM uses Claude + ChatGPT as his second brain",
+    "description": "Amir Klein is a product manager at Monday.com, leading their AI agents initiative. Despite taking two months of paternity leave, he ranked #4 out of 90 PMs in AI tool usage at his company. In this epi",
+    "tools": [
+      "Slack",
+      "Claude",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "Qj-67aJmEDA",
+    "episode_title": "“I’m incapable of doing my job without AI”: How this PM uses Claude + ChatGPT as his second brain",
+    "guest_name": null,
+    "publish_date": "20251006"
+  },
+  {
+    "title": "The secret to better AI prototypes: Why Tinder's CPO starts with JSON, not design | Ravi Mehta",
+    "description": "Ravi Mehta, now a product advisor, has built and scaled products used by millions. His past roles include Chief Product Officer at Tinder, Entrepreneur in Residence at Reforge, and senior product lead",
+    "tools": [
+      "MCP",
+      "Gemini",
+      "Midjourney",
+      "GitHub",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "_yQMGHHl49g",
+    "episode_title": "The secret to better AI prototypes: Why Tinder's CPO starts with JSON, not design | Ravi Mehta",
+    "guest_name": "Ravi Mehta",
+    "publish_date": "20250929"
+  },
+  {
+    "title": "The beginner's guide to coding with Cursor | Lee Robinson (Head of AI education)",
+    "description": "Lee Robinson is the head of AI education at Cursor, where he teaches people how to build software with AI. Previously, he helped build Vercel and Next.js as an early employee. In this episode, he demo",
+    "tools": [
+      "Gemini",
+      "Next.js",
+      "Cursor",
+      "ChatGPT",
+      "Vercel"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "Gqpk7-FruqI",
+    "episode_title": "The beginner's guide to coding with Cursor | Lee Robinson (Head of AI education)",
+    "guest_name": "Lee Robinson",
+    "publish_date": "20250922"
+  },
+  {
+    "title": "How I built an Apple Watch workout app using Cursor and Xcode (with zero mobile-app experience)",
+    "description": "Terry Lin is a product manager and developer who built Cooper’s Corner, an AI-powered fitness tracking app that works across iPhone and Apple Watch. Frustrated with traditional fitness apps that requi",
+    "tools": [
+      "Figma",
+      "Linear",
+      "GPT-4",
+      "GitHub",
+      "Cursor"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "_fD1PwltbuE",
+    "episode_title": "How I built an Apple Watch workout app using Cursor and Xcode (with zero mobile-app experience)",
+    "guest_name": "zero mobile-app experience)",
+    "publish_date": "20250915"
+  },
+  {
+    "title": "How Devin replaces your junior engineers with infinite AI interns that never sleep | Scott Wu (CEO)",
+    "description": "Scott Wu is the co-founder and CEO of Cognition Labs, the creators of Devin, an AI agent designed to function as a junior engineer on software development teams. In this conversation, Scott demonstrat",
+    "tools": [
+      "Devin",
+      "MCP",
+      "Gemini",
+      "Linear",
+      "GitHub"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "7m_xKFqSxTo",
+    "episode_title": "How Devin replaces your junior engineers with infinite AI interns that never sleep | Scott Wu (CEO)",
+    "guest_name": "Scott Wu",
+    "publish_date": "20250908"
+  },
+  {
+    "title": "How to turn meeting notes into prototypes that your sales team can immediately demo to customers",
+    "description": "Anjan Panneer Selvam is the Chief Product and Technology Officer at Acolyte Health, where he’s pioneering the use of AI across the entire product development lifecycle. In this episode, he demonstrate",
+    "tools": [
+      "Figma",
+      "ChatGPT",
+      "Perplexity",
+      "v0",
+      "Magic Patterns"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "shqv90oAIkM",
+    "episode_title": "How to turn meeting notes into prototypes that your sales team can immediately demo to customers",
+    "guest_name": null,
+    "publish_date": "20250901"
+  },
+  {
+    "title": "How to digest 36 weekly podcasts without spending 36 hours listening | Tomasz Tunguz",
+    "description": "Tomasz Tunguz is the founder of Theory Ventures, which invests in early-stage enterprise AI, data, and blockchain companies. In this episode, Tomasz reveals his custom-built “Parakeet Podcast Processo",
+    "tools": [
+      "Claude Code",
+      "Gemini",
+      "v0",
+      "GitHub",
+      "Cursor"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "8P7v1lgl-1s",
+    "episode_title": "How to digest 36 weekly podcasts without spending 36 hours listening | Tomasz Tunguz",
+    "guest_name": "Tomasz Tunguz",
+    "publish_date": "20250825"
+  },
+  {
+    "title": "Using Veo 3 to create AI-generated music videos, like a Tiny Desk concert with Notorious B.I.G.",
+    "description": "Anish Acharya is an entrepreneur and general partner at Andreessen Horowitz, focusing on consumer investing and AI-native products. In this episode, he demonstrates how AI can be used for creative and",
+    "tools": [
+      "Gemini",
+      "v0",
+      "Perplexity",
+      "GPT-4",
+      "GitHub"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "x6EZyVxyRB4",
+    "episode_title": "Using Veo 3 to create AI-generated music videos, like a Tiny Desk concert with Notorious B.I.G.",
+    "guest_name": "Notorious B.I.G.",
+    "publish_date": "20250818"
+  },
+  {
+    "title": "How Amplitude built an internal AI tool that the whole company’s obsessed with (and how you can too)",
+    "description": "Wade Chambers, Chief Engineering Officer at Amplitude, shares how his team built Moda—an internal AI tool that gives employees access to enterprise data across multiple systems, enabling faster produc",
+    "tools": [
+      "Jira",
+      "Figma",
+      "v0",
+      "GitHub",
+      "Lovable"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "9Q9Yrj2RTkg",
+    "episode_title": "How Amplitude built an internal AI tool that the whole company’s obsessed with (and how you can too)",
+    "guest_name": null,
+    "publish_date": "20250811"
+  },
+  {
+    "title": "An exclusive inside look at GPT-5",
+    "description": "In this episode, I share my hands-on experience with OpenAI’s GPT-5, the company’s new frontier model. As one of the first users outside of OpenAI to test the model, I put GPT-5 head-to-head with GPT-",
+    "tools": [
+      "Gemini",
+      "v0",
+      "GPT-4",
+      "Lovable",
+      "GPT-5"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "NCvW28UY7tk",
+    "episode_title": "An exclusive inside look at GPT-5",
+    "guest_name": null,
+    "publish_date": "20250807"
+  },
+  {
+    "title": "How a VC and tech founder used AI to launch a brick-and-mortar business in their spare time",
+    "description": "Andrew Mason (founder of Groupon, now CEO of Descript) and Nabeel Hyatt (General Partner at Spark Capital) teamed up to open a physical board-game social club in Berkeley, with AI as their business pa",
+    "tools": [
+      "MCP",
+      "MCPs",
+      "Descript",
+      "Cursor",
+      "Lovable"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "HuLL6wOEIB8",
+    "episode_title": "How a VC and tech founder used AI to launch a brick-and-mortar business in their spare time",
+    "guest_name": null,
+    "publish_date": "20250804"
+  },
+  {
+    "title": "How Block’s custom AI agent supercharges every team, from sales to data to engineering",
+    "description": "VP of engineering Jackie Brosamer and principal engineer Brad Axen join me to demo Goose, Block’s open-source AI agent that runs locally, plugs into your existing tools through model context protocol ",
+    "tools": [
+      "Square",
+      "MCP",
+      "MCPs",
+      "Goose",
+      "GitHub"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "TZPWzsk-cWc",
+    "episode_title": "How Block’s custom AI agent supercharges every team, from sales to data to engineering",
+    "guest_name": null,
+    "publish_date": "20250728"
+  },
+  {
+    "title": "Successfully coding with AI in large enterprises: Centralized rules, workflows for tech debt, & more",
+    "description": "Zach Davis is a product-minded engineering leader and builder at heart, with over 12 years of experience building high‑performing teams and crafting developer tools at companies like Atlassian and Lau",
+    "tools": [
+      "Figma",
+      "Devin",
+      "MCP",
+      "v0",
+      "GitHub"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "HtzkfjEH-GU",
+    "episode_title": "Successfully coding with AI in large enterprises: Centralized rules, workflows for tech debt, & more",
+    "guest_name": null,
+    "publish_date": "20250721"
+  },
+  {
+    "title": "How this PM streamlines 60k-page FDA submissions with Claude, Streamlit, and clever AI workflows",
+    "description": "Prerna Kaul is a product and platform leader who has spent over 14 years turning machine-learning research into consumer and B2B products at Amazon Alexa, AGI, Moderna, and now Panasonic Well. In toda",
+    "tools": [
+      "Claude",
+      "Lovable"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "A204lKJryoQ",
+    "episode_title": "How this PM streamlines 60k-page FDA submissions with Claude, Streamlit, and clever AI workflows",
+    "guest_name": null,
+    "publish_date": "20250714"
+  },
+  {
+    "title": "Mastering ChatGPT: Advanced techniques for workplace communication and productivity | Hiten Shah",
+    "description": "Hiten Shah is a serial founder who has started several analytics and security companies, including Crazy Egg and KISSmetrics. The latest one, Nira, was acquired by Dropbox in 2024. In this episode, he",
+    "tools": [
+      "Claude",
+      "ChatGPT"
+    ],
+    "category": "design",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "QwtEajzgjWY",
+    "episode_title": "Mastering ChatGPT: Advanced techniques for workplace communication and productivity | Hiten Shah",
+    "guest_name": "Hiten Shah",
+    "publish_date": "20250707"
+  },
+  {
+    "title": "How to build prototypes that actually look like your product | Colin Matthews",
+    "description": "Colin Matthews is a product manager, founder, and hobbyist engineer. After spending the past eight years in healthtech, he recently left his role as a PM at Datavant to go full-time on building his ow",
+    "tools": [
+      "Figma",
+      "v0",
+      "GitHub",
+      "Cursor",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "I62dr0TwyZM",
+    "episode_title": "How to build prototypes that actually look like your product | Colin Matthews",
+    "guest_name": null,
+    "publish_date": "20250630"
+  },
+  {
+    "title": "How a 91-year-old vibe coded a complex church event management system using Claude and Replit",
+    "description": "John Blackman, a 91-year-old retired electrical engineer, shares how he used Claude and Replit to build a complex application for his church's community service events—with no prior software developme",
+    "tools": [
+      "Replit",
+      "Claude"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "-xDQrJmVcfU",
+    "episode_title": "How a 91-year-old vibe coded a complex church event management system using Claude and Replit",
+    "guest_name": null,
+    "publish_date": "20250623"
+  },
+  {
+    "title": "How to use Cursor for interactive prototypes, sound design, and data visualization",
+    "description": "Elizabeth Lin is an independent design educator who has crafted learning experiences for Khan Academy, Primer, and Lambda School. She currently runs design is a party, an alternative online design sch",
+    "tools": [
+      "Figma",
+      "ChatGPT",
+      "v0",
+      "Cursor",
+      "Lovable"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "zQkFJNj-2lw",
+    "episode_title": "How to use Cursor for interactive prototypes, sound design, and data visualization",
+    "guest_name": null,
+    "publish_date": "20250616"
+  },
+  {
+    "title": "Gamma’s head of design on using AI to synthesize feedback and generate on-brand imagery | Zach Leach",
+    "description": "Zach Leach, head of design at Gamma, reveals how his small team uses AI to analyze global feedback, create on-brand imagery, and maintain design quality while serving users in more than 60 countries.",
+    "tools": [
+      "Figma",
+      "Midjourney",
+      "Descript",
+      "ChatGPT",
+      "Claude"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "hzPKb8bDvdY",
+    "episode_title": "Gamma’s head of design on using AI to synthesize feedback and generate on-brand imagery | Zach Leach",
+    "guest_name": "Zach Leach",
+    "publish_date": "20250609"
+  },
+  {
+    "title": "The exact AI playbook (MCPs, GPTs, Granola) that saved ElevenLabs $100k+ & helps them ship daily",
+    "description": "Luke Harries, Head of Growth at ElevenLabs, the leading AI voice technology company, shares how he’s automating marketing workflows with AI—from case studies to translations to WhatsApp integrations—s",
+    "tools": [
+      "Figma",
+      "Granola",
+      "MCP",
+      "v0",
+      "MCPs"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "5Byg-9K8JnM",
+    "episode_title": "The exact AI playbook (MCPs, GPTs, Granola) that saved ElevenLabs $100k+ & helps them ship daily",
+    "guest_name": null,
+    "publish_date": "20250602"
+  },
+  {
+    "title": "A 3-step AI coding workflow for solo founders | Ryan Carson (5x founder)",
+    "description": "Ryan Carson is a five-time founder who has spent the past 20 years building, scaling, and selling startups. In this episode, he shares his playbook for using AI to build products, turning “vibe coding",
+    "tools": [
+      "MCP",
+      "Gemini",
+      "MCPs",
+      "GitHub",
+      "Cursor"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "fD4ktSkNCw4",
+    "episode_title": "A 3-step AI coding workflow for solo founders | Ryan Carson (5x founder)",
+    "guest_name": null,
+    "publish_date": "20250526"
+  },
+  {
+    "title": "How custom GPTs can make you a better manager | Hilary Gridley (Head of Core Product at Whoop)",
+    "description": "Hilary Gridley, Head of Core Product at Whoop, shares how she uses dozens of custom GPTs for her team that think and give feedback like her, allowing her to scale herself up and create time for higher",
+    "tools": [
+      "Claude",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "xDMkkOC-EhI",
+    "episode_title": "How custom GPTs can make you a better manager | Hilary Gridley (Head of Core Product at Whoop)",
+    "guest_name": "Hilary Gridley",
+    "publish_date": "20250519"
+  },
+  {
+    "title": "A designer’s guide to AI: Why this designer switched to Cursor | Joel Unger",
+    "description": "Joel Unger, design director at Atlassian, shares how AI is transforming the way he designs Trello and other products. He walks through real-world workflows using tools like Midjourney and Cursor to pr",
+    "tools": [
+      "Trello",
+      "Figma",
+      "Midjourney",
+      "Cursor",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "PM_WegIlNls",
+    "episode_title": "A designer’s guide to AI: Why this designer switched to Cursor | Joel Unger",
+    "guest_name": "Joel Unger",
+    "publish_date": "20250512"
+  },
+  {
+    "title": "Vibe coding a 3D multiplayer game in 15 minutes—with no game dev experience | Cody De Arkland",
+    "description": "Cody De Arkland is the senior director of developer experience at Sentry, leading a team that empowers developers to build and ship software with greater safety and efficiency. Watch him speed-run the",
+    "tools": [
+      "MCP",
+      "v0",
+      "GitHub",
+      "Cursor",
+      "Claude"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "xW5y2Yv_E2Y",
+    "episode_title": "Vibe coding a 3D multiplayer game in 15 minutes—with no game dev experience | Cody De Arkland",
+    "guest_name": "Cody De Arkland",
+    "publish_date": "20250505"
+  },
+  {
+    "title": "How this former NYT columnist uses ChatGPT to brainstorm, do research, and find the perfect metaphor",
+    "description": "Farhad Manjoo, a former New York Times and Wall Street Journal columnist, reveals his AI-enhanced writing workflow, from research to finding the perfect metaphor, and how these tools have transformed ",
+    "tools": [
+      "Cursor",
+      "ChatGPT"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "OCw145kwwLs",
+    "episode_title": "How this former NYT columnist uses ChatGPT to brainstorm, do research, and find the perfect metaphor",
+    "guest_name": null,
+    "publish_date": "20250428"
+  },
+  {
+    "title": "Gumroad CEO's playbook to 40x his team's productivity with v0, Cursor, and Devin | Sahil Lavingia",
+    "description": "Sahil Lavingia is the CEO and founder of Gumroad, where AI agents are already writing 41% of all code commits, and they’re targeting 80% by year-end. Sahil demonstrates how this approach allows him to",
+    "tools": [
+      "Figma",
+      "Devin",
+      "v0",
+      "Next.js",
+      "GitHub"
+    ],
+    "category": "coding",
+    "audience": "everyone",
+    "difficulty": "intermediate",
+    "episode_id": "KVZ3vMx_aJ4",
+    "episode_title": "Gumroad CEO's playbook to 40x his team's productivity with v0, Cursor, and Devin | Sahil Lavingia",
+    "guest_name": "Sahil Lavingia",
+    "publish_date": "20250422"
+  }
+]
