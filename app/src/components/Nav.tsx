@@ -17,13 +17,13 @@ export default function Nav() {
             href="/"
             className="text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"
           >
-            Episodes
+            Discover
           </Link>
           <Link
-            href="/use-cases"
+            href="/episodes"
             className="text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"
           >
-            Use Cases
+            Episodes
           </Link>
         </div>
       </div>

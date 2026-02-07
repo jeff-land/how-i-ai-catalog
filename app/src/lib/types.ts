@@ -1,5 +1,6 @@
 export interface UseCase {
   title: string;
+  one_liner: string | null;
   description: string;
   tools: string[];
   category: string;
@@ -31,6 +32,7 @@ export interface Episode {
 
 export interface UseCaseFlat {
   title: string;
+  one_liner: string | null;
   description: string;
   tools: string[];
   category: string;
@@ -39,5 +41,6 @@ export interface UseCaseFlat {
   episode_id: string;
   episode_title: string;
   guest_name: string | null;
+  guest_role: string | null;
   publish_date: string;
 }

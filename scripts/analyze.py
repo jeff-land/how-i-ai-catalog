@@ -26,9 +26,10 @@ USE_CASES_PATH = os.path.join(os.path.dirname(__file__), "..", "data", "use-case
 MODEL = "claude-sonnet-4-20250514"
 DELAY_SECONDS = 1  # Between API calls
 
-SYSTEM_PROMPT = """You are an expert analyst for AI workflows and use cases. 
-You will be given a podcast transcript from "How I AI", a show where guests share practical AI workflows.
-Extract structured information from the transcript."""
+SYSTEM_PROMPT = """You are an expert analyst specializing in practical AI workflows and use cases.
+You will be given content from "How I AI", a podcast/video series where guests share how they actually use AI in their work.
+Your job is to extract EVERY distinct, actionable AI workflow or use case discussed — even brief mentions or tangential examples.
+The goal is to build a comprehensive catalog that helps people discover AI applications they wouldn't think of on their own."""
 
 EXTRACTION_PROMPT = """Analyze this podcast content and extract the following information as JSON.
 
@@ -41,10 +42,11 @@ Return ONLY valid JSON with this exact structure:
   "use_cases": [
     {
       "title": "Short descriptive title of the workflow/use case",
-      "description": "1-2 sentence description of what the workflow does",
+      "one_liner": "A single punchy sentence — what this lets you do, written as if recommending it to a colleague",
+      "description": "2-3 sentence description of what the workflow does, how it works, and why it's useful",
       "tools": ["Tool1", "Tool2"],
-      "category": "one of: coding, writing, design, automation, data-analysis, productivity, hiring, marketing, research, personal, other",
-      "audience": "one of: engineers, product-managers, designers, executives, marketers, everyone, non-technical",
+      "category": "one of: coding, writing, design, automation, data-analysis, productivity, hiring, marketing, research, customer-support, sales, operations, strategy, finance, learning, communication, project-management, content-creation, personal, other",
+      "audience": "one of: engineers, product-managers, designers, executives, marketers, support, ops, data, leadership, freelancers, everyone, non-technical",
       "difficulty": "one of: beginner, intermediate, advanced"
     }
   ],
@@ -53,9 +55,12 @@ Return ONLY valid JSON with this exact structure:
 }
 
 Rules:
-- Extract ALL distinct use cases / workflows discussed, not just the main one
-- Be specific in use case titles — "Automate CRM updates with Claude + Zapier" is better than "CRM automation"
-- tools_mentioned should be a comprehensive list of every tool, product, or platform named
+- Extract between 3 and 10 distinct use cases per episode. Dig deep — include major workflows AND smaller tips, passing mentions, and "oh I also use it for..." asides
+- Be specific and actionable in use case titles — "Generate weekly stakeholder updates from Jira tickets using Claude" is better than "Project updates"
+- The one_liner should be compelling and scannable — imagine someone browsing a gallery of 300+ ideas looking for inspiration
+- Categorize thoughtfully — "coding" is for software development specifically, "automation" is for workflow automation, "content-creation" is for making videos/podcasts/social content, "writing" is for documents/emails/copy, etc.
+- Assign the most specific audience — use "everyone" only when it truly applies to all roles
+- tools_mentioned should be a comprehensive list of every AI tool, product, platform, or API named in the content
 - If you cannot determine a field, use null
 - Return ONLY the JSON object, no markdown fencing, no explanation
 
@@ -89,7 +94,7 @@ def analyze_episode(client, episode):
     try:
         response = client.messages.create(
             model=MODEL,
-            max_tokens=2000,
+            max_tokens=4000,
             system=SYSTEM_PROMPT,
             messages=[
                 {
@@ -137,6 +142,7 @@ def build_use_cases_index(episodes: list) -> list:
             use_cases.append(
                 {
                     "title": uc.get("title"),
+                    "one_liner": uc.get("one_liner"),
                     "description": uc.get("description"),
                     "tools": uc.get("tools", []),
                     "category": uc.get("category"),
@@ -145,6 +151,7 @@ def build_use_cases_index(episodes: list) -> list:
                     "episode_id": ep["id"],
                     "episode_title": ep["title"],
                     "guest_name": analysis.get("guest_name"),
+                    "guest_role": analysis.get("guest_role"),
                     "publish_date": ep.get("publish_date"),
                 }
             )
@@ -159,6 +166,7 @@ def main():
         print("  export ANTHROPIC_API_KEY=sk-ant-...")
         sys.exit(1)
 
+    force = "--force" in sys.argv
     client = anthropic.Anthropic(api_key=api_key)
 
     # Load episodes
@@ -171,9 +179,9 @@ def main():
 
     print("Loaded %d episodes." % len(episodes))
 
-    # Check for existing analyzed data to allow resuming
+    # Check for existing analyzed data to allow resuming (skip with --force)
     analyzed_ids = set()
-    if os.path.exists(OUTPUT_PATH):
+    if not force and os.path.exists(OUTPUT_PATH):
         with open(OUTPUT_PATH, "r", encoding="utf-8") as f:
             existing = json.load(f)
             for ep in existing:
@@ -185,6 +193,8 @@ def main():
                             e["analysis"] = ep["analysis"]
                             break
         print("Found %d already-analyzed episodes (will skip)." % len(analyzed_ids))
+    elif force:
+        print("--force flag set: re-analyzing ALL episodes.")
 
     # Analyze all episodes — those with transcripts get full analysis,
     # those with only descriptions get lighter analysis

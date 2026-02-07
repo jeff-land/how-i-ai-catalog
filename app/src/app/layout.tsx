@@ -9,9 +9,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "How I AI — Transcript Catalog",
+  title: "How I AI — AI Use Case Catalog",
   description:
-    "A searchable catalog of every How I AI podcast episode, with AI-extracted use cases, tools, and workflows.",
+    "Discover 375+ real AI use cases from the How I AI podcast. Browse by role, category, or tool to find your next AI workflow.",
 };
 
 export default function RootLayout({

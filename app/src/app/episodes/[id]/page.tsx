@@ -24,13 +24,13 @@ export default async function EpisodePage({ params }: EpisodePageProps) {
     <div className="mx-auto max-w-3xl">
       {/* Back link */}
       <Link
-        href="/"
+        href="/episodes"
         className="mb-6 inline-flex items-center gap-1.5 text-sm text-[var(--color-muted)] transition-colors hover:text-[var(--color-foreground)]"
       >
         <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
         </svg>
-        Back to catalog
+        Back to episodes
       </Link>
 
       {/* Thumbnail */}
