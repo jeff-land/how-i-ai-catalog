@@ -1,5 +1,5 @@
 import { getEpisode, getEpisodes } from "@/lib/data";
-import { formatDate, formatDuration } from "@/lib/utils";
+import { formatDate, formatDuration, formatTimestamp } from "@/lib/utils";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import TranscriptToggle from "@/components/TranscriptToggle";
@@ -122,38 +122,59 @@ export default async function EpisodePage({ params }: EpisodePageProps) {
             Use Cases & Workflows
           </h2>
           <div className="space-y-3">
-            {analysis.use_cases.map((uc, i) => (
-              <div
-                key={i}
-                className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4"
-              >
-                <h3 className="font-semibold text-[var(--color-foreground)]">
-                  {uc.title}
-                </h3>
-                <p className="mt-1 text-sm text-[var(--color-muted)]">
-                  {uc.description}
-                </p>
-                <div className="mt-3 flex flex-wrap gap-1.5">
-                  {uc.tools?.map((tool) => (
-                    <span
-                      key={tool}
-                      className="rounded-full bg-[var(--color-accent-light)] px-2 py-0.5 text-[10px] font-medium text-[var(--color-accent)]"
-                    >
-                      {tool}
+            {analysis.use_cases.map((uc, i) => {
+              const tsUrl =
+                uc.timestamp_seconds != null
+                  ? `${episode.url}&t=${Math.floor(uc.timestamp_seconds)}`
+                  : null;
+              return (
+                <div
+                  key={i}
+                  className="rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] p-4"
+                >
+                  <div className="flex items-start justify-between gap-3">
+                    <h3 className="font-semibold text-[var(--color-foreground)]">
+                      {uc.title}
+                    </h3>
+                    {tsUrl && (
+                      <a
+                        href={tsUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="shrink-0 inline-flex items-center gap-1 rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-600 transition-colors hover:bg-red-100 dark:bg-red-900/20 dark:text-red-400 dark:hover:bg-red-900/40"
+                      >
+                        <svg className="h-3 w-3" viewBox="0 0 24 24" fill="currentColor">
+                          <path d="M8 5v14l11-7z" />
+                        </svg>
+                        {formatTimestamp(uc.timestamp_seconds!)}
+                      </a>
+                    )}
+                  </div>
+                  <p className="mt-1 text-sm text-[var(--color-muted)]">
+                    {uc.description}
+                  </p>
+                  <div className="mt-3 flex flex-wrap gap-1.5">
+                    {uc.tools?.map((tool) => (
+                      <span
+                        key={tool}
+                        className="rounded-full bg-[var(--color-accent-light)] px-2 py-0.5 text-[10px] font-medium text-[var(--color-accent)]"
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                    <span className="rounded-full border border-[var(--color-border)] px-2 py-0.5 text-[10px] text-[var(--color-muted)]">
+                      {uc.category}
                     </span>
-                  ))}
-                  <span className="rounded-full border border-[var(--color-border)] px-2 py-0.5 text-[10px] text-[var(--color-muted)]">
-                    {uc.category}
-                  </span>
-                  <span className="rounded-full border border-[var(--color-border)] px-2 py-0.5 text-[10px] text-[var(--color-muted)]">
-                    {uc.difficulty}
-                  </span>
-                  <span className="rounded-full border border-[var(--color-border)] px-2 py-0.5 text-[10px] text-[var(--color-muted)]">
-                    {uc.audience}
-                  </span>
+                    <span className="rounded-full border border-[var(--color-border)] px-2 py-0.5 text-[10px] text-[var(--color-muted)]">
+                      {uc.difficulty}
+                    </span>
+                    <span className="rounded-full border border-[var(--color-border)] px-2 py-0.5 text-[10px] text-[var(--color-muted)]">
+                      {uc.audience}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
       )}

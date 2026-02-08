@@ -3,6 +3,7 @@
 import { useState, useMemo, useCallback } from "react";
 import Link from "next/link";
 import { UseCaseFlat } from "@/lib/types";
+import { formatTimestamp } from "@/lib/utils";
 import SearchBar from "./SearchBar";
 import RolePicker from "./RolePicker";
 
@@ -436,20 +437,24 @@ export default function HomeClient({
 }
 
 function PickCard({ useCase }: { useCase: UseCaseFlat }) {
+  const tsUrl =
+    useCase.timestamp_seconds != null
+      ? `${useCase.episode_url || `https://www.youtube.com/watch?v=${useCase.episode_id}`}&t=${Math.floor(useCase.timestamp_seconds)}`
+      : null;
+
   return (
-    <Link
-      href={`/episodes/${useCase.episode_id}`}
-      className="group relative flex flex-col rounded-xl border-2 border-[var(--color-accent)]/30 bg-[var(--color-surface)] p-4 transition-all hover:border-[var(--color-accent)] hover:shadow-md"
-    >
+    <div className="group relative flex flex-col rounded-xl border-2 border-[var(--color-accent)]/30 bg-[var(--color-surface)] p-4 transition-all hover:border-[var(--color-accent)] hover:shadow-md">
       {/* Pick badge */}
       <span className="absolute -top-2 right-3 rounded-full bg-[var(--color-accent)] px-2 py-0.5 text-[10px] font-semibold text-white">
         Pick
       </span>
 
       {/* Title */}
-      <h3 className="text-sm font-semibold leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] line-clamp-2">
-        {useCase.title}
-      </h3>
+      <Link href={`/episodes/${useCase.episode_id}`}>
+        <h3 className="text-sm font-semibold leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] line-clamp-2">
+          {useCase.title}
+        </h3>
+      </Link>
 
       {/* Pick reason */}
       {useCase.pick_reason && (
@@ -487,30 +492,52 @@ function PickCard({ useCase }: { useCase: UseCaseFlat }) {
         )}
         {useCase.guest_name && <span>·</span>}
         <span>{formatCategory(useCase.category)}</span>
+        {tsUrl && (
+          <>
+            <span>·</span>
+            <a
+              href={tsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-0.5 font-medium text-red-500 hover:text-red-600"
+            >
+              <svg className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              {formatTimestamp(useCase.timestamp_seconds!)}
+            </a>
+          </>
+        )}
       </div>
-    </Link>
+    </div>
   );
 }
 
 function UseCaseCard({ useCase }: { useCase: UseCaseFlat }) {
+  const tsUrl =
+    useCase.timestamp_seconds != null
+      ? `${useCase.episode_url || `https://www.youtube.com/watch?v=${useCase.episode_id}`}&t=${Math.floor(useCase.timestamp_seconds)}`
+      : null;
+
   return (
-    <Link
-      href={`/episodes/${useCase.episode_id}`}
-      className={`group flex flex-col rounded-xl border bg-[var(--color-surface)] p-4 transition-all hover:shadow-md ${
+    <div
+      className={`group relative flex flex-col rounded-xl border bg-[var(--color-surface)] p-4 transition-all hover:shadow-md ${
         useCase.is_pick
           ? "border-[var(--color-accent)]/30 hover:border-[var(--color-accent)]"
           : "border-[var(--color-border)] hover:border-[var(--color-accent)]"
       }`}
     >
       {/* Title */}
-      <h3 className="text-sm font-semibold leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] line-clamp-2">
-        {useCase.is_pick && (
-          <span className="mr-1.5 inline-block rounded bg-[var(--color-accent)] px-1 py-0.5 text-[9px] font-bold text-white align-middle">
-            PICK
-          </span>
-        )}
-        {useCase.title}
-      </h3>
+      <Link href={`/episodes/${useCase.episode_id}`}>
+        <h3 className="text-sm font-semibold leading-snug text-[var(--color-foreground)] group-hover:text-[var(--color-accent)] line-clamp-2">
+          {useCase.is_pick && (
+            <span className="mr-1.5 inline-block rounded bg-[var(--color-accent)] px-1 py-0.5 text-[9px] font-bold text-white align-middle">
+              PICK
+            </span>
+          )}
+          {useCase.title}
+        </h3>
+      </Link>
 
       {/* One-liner or description */}
       <p className="mt-1.5 text-xs leading-relaxed text-[var(--color-muted)] line-clamp-2">
@@ -541,7 +568,24 @@ function UseCaseCard({ useCase }: { useCase: UseCaseFlat }) {
         )}
         {useCase.guest_name && <span>·</span>}
         <span className="capitalize">{useCase.difficulty}</span>
+        {tsUrl && (
+          <>
+            <span>·</span>
+            <a
+              href={tsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-0.5 font-medium text-red-500 hover:text-red-600"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <svg className="h-2.5 w-2.5" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M8 5v14l11-7z" />
+              </svg>
+              {formatTimestamp(useCase.timestamp_seconds!)}
+            </a>
+          </>
+        )}
       </div>
-    </Link>
+    </div>
   );
 }

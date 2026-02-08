@@ -6,6 +6,7 @@ export interface UseCase {
   category: string;
   audience: string;
   difficulty: string;
+  timestamp_seconds: number | null;
   intents?: string[];
   is_pick?: boolean;
   pick_reason?: string | null;
@@ -41,11 +42,13 @@ export interface UseCaseFlat {
   category: string;
   audience: string;
   difficulty: string;
+  timestamp_seconds: number | null;
   intents: string[];
   is_pick: boolean;
   pick_reason: string | null;
   episode_id: string;
   episode_title: string;
+  episode_url: string | null;
   guest_name: string | null;
   guest_role: string | null;
   publish_date: string;

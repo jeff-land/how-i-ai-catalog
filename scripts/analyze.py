@@ -47,7 +47,8 @@ Return ONLY valid JSON with this exact structure:
       "tools": ["Tool1", "Tool2"],
       "category": "one of: coding, writing, design, automation, data-analysis, productivity, hiring, marketing, research, customer-support, sales, operations, strategy, finance, learning, communication, project-management, content-creation, personal, other",
       "audience": "one of: engineers, product-managers, designers, executives, marketers, support, ops, data, leadership, freelancers, everyone, non-technical",
-      "difficulty": "one of: beginner, intermediate, advanced"
+      "difficulty": "one of: beginner, intermediate, advanced",
+      "timestamp_seconds": 123
     }
   ],
   "tools_mentioned": ["Tool1", "Tool2", "Tool3"],
@@ -61,11 +62,60 @@ Rules:
 - Categorize thoughtfully — "coding" is for software development specifically, "automation" is for workflow automation, "content-creation" is for making videos/podcasts/social content, "writing" is for documents/emails/copy, etc.
 - Assign the most specific audience — use "everyone" only when it truly applies to all roles
 - tools_mentioned should be a comprehensive list of every AI tool, product, platform, or API named in the content
+- timestamp_seconds: the approximate time in the video where this use case is first discussed. Use the [MM:SS] markers in the transcript to determine this. If no timestamp markers are present, use null
 - If you cannot determine a field, use null
 - Return ONLY the JSON object, no markdown fencing, no explanation
 
 CONTENT:
 """
+
+
+def format_timestamped_transcript(episode):
+    # type: (dict) -> str
+    """Format transcript with approximate timestamp markers.
+
+    If we have real transcript_segments with start times, use those.
+    Otherwise, estimate timestamps from word position and total duration.
+    """
+    segments = episode.get("transcript_segments")
+    transcript = episode.get("transcript")
+    duration = episode.get("duration_seconds") or 0
+
+    if segments:
+        # Real timestamped segments — insert [MM:SS] markers every ~30 seconds
+        lines = []
+        last_marker = -30  # Force first marker
+        for seg in segments:
+            start = seg.get("start", 0)
+            text = seg.get("text", "")
+            if start - last_marker >= 30:
+                mins = int(start) // 60
+                secs = int(start) % 60
+                lines.append("[%d:%02d] %s" % (mins, secs, text))
+                last_marker = start
+            else:
+                lines.append(text)
+        return " ".join(lines)
+
+    if transcript and duration > 0:
+        # Estimate timestamps from word position
+        words = transcript.split()
+        total_words = len(words)
+        if total_words == 0:
+            return transcript
+
+        lines = []
+        marker_interval_words = max(1, total_words // (duration // 30)) if duration >= 30 else total_words
+        for i, word in enumerate(words):
+            if i % marker_interval_words == 0:
+                approx_seconds = int((i / total_words) * duration)
+                mins = approx_seconds // 60
+                secs = approx_seconds % 60
+                lines.append("[%d:%02d]" % (mins, secs))
+            lines.append(word)
+        return " ".join(lines)
+
+    return transcript or ""
 
 
 def analyze_episode(client, episode):
@@ -81,12 +131,14 @@ def analyze_episode(client, episode):
     context = "Episode Title: %s\n" % episode.get("title", "Unknown")
 
     if transcript:
+        # Format with timestamp markers
+        timestamped = format_timestamped_transcript(episode)
         # Truncate very long transcripts to stay within context limits
-        words = transcript.split()
-        if len(words) > 12000:
-            transcript = " ".join(words[:12000]) + " [TRUNCATED]"
+        words = timestamped.split()
+        if len(words) > 14000:
+            timestamped = " ".join(words[:14000]) + " [TRUNCATED]"
         context += "Episode Description: %s\n\n" % description[:500]
-        content = context + "FULL TRANSCRIPT:\n" + transcript
+        content = context + "FULL TRANSCRIPT (with approximate [MM:SS] timestamp markers):\n" + timestamped
     else:
         # Use the full description as the content source
         content = context + "EPISODE DESCRIPTION (no transcript available):\n" + description
@@ -148,8 +200,10 @@ def build_use_cases_index(episodes: list) -> list:
                     "category": uc.get("category"),
                     "audience": uc.get("audience"),
                     "difficulty": uc.get("difficulty"),
+                    "timestamp_seconds": uc.get("timestamp_seconds"),
                     "episode_id": ep["id"],
                     "episode_title": ep["title"],
+                    "episode_url": ep.get("url"),
                     "guest_name": analysis.get("guest_name"),
                     "guest_role": analysis.get("guest_role"),
                     "publish_date": ep.get("publish_date"),
