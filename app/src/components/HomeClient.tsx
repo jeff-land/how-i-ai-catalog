@@ -65,6 +65,7 @@ export default function HomeClient({
   const [expandedCategories, setExpandedCategories] = useState<Set<string>>(new Set());
   const [surpriseUseCase, setSurpriseUseCase] = useState<UseCaseFlat | null>(null);
   const [showAllPicks, setShowAllPicks] = useState(false);
+  const [timestampsOnly, setTimestampsOnly] = useState(false);
 
   // All picks
   const picks = useMemo(() => useCases.filter((uc) => uc.is_pick), [useCases]);
@@ -80,6 +81,10 @@ export default function HomeClient({
       // Intent filter
       if (selectedIntent) {
         if (!uc.intents?.includes(selectedIntent)) return false;
+      }
+      // Timestamps only
+      if (timestampsOnly) {
+        if (uc.timestamp_seconds == null) return false;
       }
       // Text search
       if (q) {
@@ -99,7 +104,7 @@ export default function HomeClient({
       }
       return true;
     });
-  }, [useCases, search, selectedRole, selectedIntent]);
+  }, [useCases, search, selectedRole, selectedIntent, timestampsOnly]);
 
   // Filtered picks (respect role + intent + search)
   const filteredPicks = useMemo(() => {
@@ -138,7 +143,7 @@ export default function HomeClient({
     setSurpriseUseCase(random);
   }, [filtered, useCases]);
 
-  const hasActiveFilters = selectedRole || selectedIntent || search;
+  const hasActiveFilters = selectedRole || selectedIntent || search || timestampsOnly;
 
   const CARDS_PER_CATEGORY = 6;
   const PICKS_INITIAL = 6;
@@ -234,21 +239,43 @@ export default function HomeClient({
         )}
       </div>
 
-      {/* Search + Surprise me */}
-      <div className="mx-auto flex max-w-2xl items-center gap-3">
-        <div className="flex-1">
-          <SearchBar
-            value={search}
-            onChange={setSearch}
-            placeholder="Search use cases, tools, guests..."
-          />
+      {/* Search + controls */}
+      <div className="mx-auto max-w-2xl space-y-2">
+        <div className="flex items-center gap-3">
+          <div className="flex-1">
+            <SearchBar
+              value={search}
+              onChange={setSearch}
+              placeholder="Search use cases, tools, guests..."
+            />
+          </div>
+          <button
+            onClick={handleSurpriseMe}
+            className="shrink-0 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2.5 text-sm font-medium text-[var(--color-muted)] transition-all hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-sm"
+          >
+            Surprise me
+          </button>
         </div>
-        <button
-          onClick={handleSurpriseMe}
-          className="shrink-0 rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-4 py-2.5 text-sm font-medium text-[var(--color-muted)] transition-all hover:border-[var(--color-accent)] hover:text-[var(--color-accent)] hover:shadow-sm"
-        >
-          Surprise me
-        </button>
+        <div className="flex justify-center">
+          <button
+            onClick={() => setTimestampsOnly(!timestampsOnly)}
+            className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium transition-all ${
+              timestampsOnly
+                ? "bg-red-50 text-red-600 dark:bg-red-900/20 dark:text-red-400"
+                : "text-[var(--color-muted)] hover:text-[var(--color-foreground)]"
+            }`}
+          >
+            <svg className="h-3 w-3" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+            Has video timestamp
+            {timestampsOnly && (
+              <svg className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Surprise me result */}
@@ -325,6 +352,7 @@ export default function HomeClient({
                 setSearch("");
                 setSelectedRole(null);
                 setSelectedIntent(null);
+                setTimestampsOnly(false);
               }}
               className="text-[var(--color-accent)] hover:underline"
             >
@@ -381,6 +409,7 @@ export default function HomeClient({
               setSearch("");
               setSelectedRole(null);
               setSelectedIntent(null);
+              setTimestampsOnly(false);
             }}
             className="mt-3 text-sm font-medium text-[var(--color-accent)] hover:underline"
           >
