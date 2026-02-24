@@ -1,1 +1,29 @@
-[]
+[
+  {
+    "id": "sample-001",
+    "title": "Building AI-powered code editors | John Smith",
+    "description": "In this episode, John Smith discusses how he uses Cursor and Claude to build software 10x faster. We explore prompt engineering, agentic workflows, and the future of AI coding assistants. Learn how to leverage GitHub Copilot and ChatGPT for code review and automated testing.",
+    "publish_date": "2025-12-01",
+    "url": "https://youtube.com/watch?v=sample001",
+    "duration": 3600,
+    "transcript": "Sample transcript for episode about building AI-powered code editors."
+  },
+  {
+    "id": "sample-002",
+    "title": "AI in product design workflows | Jane Doe",
+    "description": "Jane Doe shares her design workflow using Figma, Midjourney, and Claude. She explains how AI tools help her prototype faster and iterate on UI designs. We discuss the role of v0 and Vercel in modern web design.",
+    "publish_date": "2025-11-15",
+    "url": "https://youtube.com/watch?v=sample002",
+    "duration": 2700,
+    "transcript": "Sample transcript for episode about AI in product design."
+  },
+  {
+    "id": "sample-003",
+    "title": "Automating business processes with AI agents | Alex Johnson",
+    "description": "Alex Johnson demonstrates how he automates business workflows using Zapier, Claude, and custom AI agents. From data analysis to marketing automation, discover how small teams can punch above their weight with AI.",
+    "publish_date": "2025-10-30",
+    "url": "https://youtube.com/watch?v=sample003",
+    "duration": 3200,
+    "transcript": "Sample transcript for episode about automating business processes."
+  }
+]
